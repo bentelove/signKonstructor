@@ -68,14 +68,14 @@ export default function Production() {
                         </div>
                         <div className="col-span-2">
                           {!signCreate&&viewSignProduction&&
-                          <div className="p-4 cursor-pointer rounded-lg bg-gray-200"  onClick={()=>{setViewSignProduction(false)}}>
+                          <div className="p-4 cursor-pointer rounded-lg bg-gray-200 hover:bg-gray-300"  onClick={()=>{setViewSignProduction(false)}}>
                             <div className="text-center">Необходимо произвести:</div>
                             <div className="text-3xl font-bold text-center">3 шт</div>
-                            <div className="rounded-lg text-center p-4 bg-red-600 text-white font-bold" onClick={(e)=>{e.stopPropagation();setSignCreate(true)}}>Создать основы <span className="block text-sm font-normal">Треугольник 600 мм 3шт</span></div>
+                            <div className="rounded-lg text-center p-4 bg-red-600 text-white font-bold hover:bg-green-600" onClick={(e)=>{e.stopPropagation();setSignCreate(true)}}>Создать основы <span className="block text-sm font-normal">Треугольник 600 мм 3шт</span></div>
                           </div>
                           }
                           {!signCreate&&!viewSignProduction&&
-                          <div className="p-4 cursor-pointer rounded-lg bg-gray-300" onClick={()=>{setViewSignProduction(true)}}>
+                          <div className="p-4 cursor-pointer rounded-lg bg-gray-300 hover:bg-gray-400" onClick={()=>{setViewSignProduction(true)}}>
                             <div className="text-center">Необходимо произвести:</div>
                             <div className="text-3xl font-bold text-center">3 шт</div>
                           </div>
@@ -89,17 +89,17 @@ export default function Production() {
                         </div>
                     </div>
                   </div>
-                  <div className="p-4 cursor-pointer rounded-lg bg-gray-100">
+                  <div className="p-4 rounded-lg bg-gray-100">
                     <div className="text-lg mb-4 font-bold">Пленка</div>
                     {!materialCreate&&viewMaterialProduction&&
-                    <div className="p-4 rounded-lg bg-gray-200">
+                    <div className="p-4 rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300"onClick={()=>setViewMaterialProduction(false)}>
                       <div className="text-center">Необходимо произвести:</div>
                       <div className="text-3xl font-bold text-center">5 шт</div>
-                      <div className="rounded-lg text-center p-4 bg-red-600 text-white font-bold" onClick={(e)=>{e.stopPropagation();setMaterialCreate(true)}}>Создать пленку <span className="block text-sm font-normal">Знак 3.1 600 мм «А» инженерная призматическая 5шт</span></div>
+                      <div className="rounded-lg text-center p-4 bg-red-600 text-white font-bold hover:bg-green-600" onClick={(e)=>{e.stopPropagation();setMaterialCreate(true)}}>Создать пленку <span className="block text-sm font-normal">Знак 3.1 600 мм «А» инженерная призматическая 5шт</span></div>
                     </div>
                     }
                     {!materialCreate&&!viewMaterialProduction&&
-                    <div className="p-4 rounded-lg bg-gray-300" onClick={()=>setViewMaterialProduction(true)}>
+                    <div className="p-4 rounded-lg cursor-pointer bg-gray-300 hover:bg-gray-400" onClick={()=>setViewMaterialProduction(true)}>
                       <div className="text-center">Необходимо произвести:</div>
                       <div className="text-3xl font-bold text-center">5 шт</div>
                     </div>
