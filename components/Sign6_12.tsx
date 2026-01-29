@@ -17,7 +17,8 @@ interface City{
 }
 export enum ColorSign{
     BLUE,
-    WHITE
+    WHITE,
+    GREEN
 }
 const CHAR_WIDTH_RATIOS: Record<string, number> = {
     'А': 0.675, 'Б': 0.6, 'В': 0.65, 'Г': 0.5, 'Д': 0.7, 'Е': 0.615, 'Ё': 0.6, 'Ж': 1.0,
@@ -95,8 +96,8 @@ export default function Sign6_12({width,baseData,fontSize=100,gapA=0.5,gapB=0.5,
             <text
                 fill={color==ColorSign.BLUE?"#ffffff":"#000000"}
                 fontSize={fontSize*cSize}
-                fontWeight="900"
-                fontFamily="Arial, sans-serif"
+                fontWeight="500"
+                fontFamily="Arial Bold, sans-serif"
                 x={0-(letterSpacing*fontSize*cSize)}
             >
                 {city.underText.toLowerCase()}
@@ -105,8 +106,8 @@ export default function Sign6_12({width,baseData,fontSize=100,gapA=0.5,gapB=0.5,
             <text
                 fill={color==ColorSign.BLUE?"#ffffff":"#000000"}
                 fontSize={fontSize*cSize}
-                fontWeight="900"
-                fontFamily="Arial, sans-serif"
+                fontWeight="500"
+                fontFamily="Arial Bold, sans-serif"
                 x={0-(letterSpacing*fontSize*cSize)}
                 y={topY}
             >

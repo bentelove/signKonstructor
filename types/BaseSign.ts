@@ -12,6 +12,8 @@ export interface BaseData{
     outlineBlack: number,
     outlineWhite:number,
     borderCircle:number,
+    zipBorderWhite:number,
+    zipBorderBlack:number,
     seven: SignSeven,
     debug?: boolean
 }

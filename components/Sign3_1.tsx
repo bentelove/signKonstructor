@@ -5,7 +5,7 @@ import { useState, useMemo, useEffect } from 'react';
 import SimpleCircle from './SimpleCircle';
 import { BaseSign } from '@/types/BaseSign';
 
-export default function Sign3_({width,sizeType,time,sizeView,baseData}:BaseSign) {
+export default function Sign3_1({width,sizeType,time,sizeView,baseData}:BaseSign) {
 
     const [size,setSize] = useState(900);
 

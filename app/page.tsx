@@ -1,4 +1,5 @@
 'use client'
+import Sign1_1 from "@/components/Sign1_1";
 import Sign3_1 from "@/components/Sign3_1";
 import Sign3_13 from "@/components/Sign3_13";
 import Sign3_14 from "@/components/Sign3_14";
@@ -11,6 +12,7 @@ import Sign5_15_7, { Lines } from "@/components/Sign5_15_7";
 import Sign5_15_8 from "@/components/Sign5_15_8";
 import Sign5_23 from "@/components/Sign5_23";
 import Sign5_25 from "@/components/Sign5_25";
+import Sign6_10_1, { DirectionCity } from "@/components/Sign6_10_1";
 import Sign6_12, { ColorSign } from "@/components/Sign6_12";
 import Sign7_1 from "@/components/Sign7_1";
 import Sign7_2 from "@/components/Sign7_2";
@@ -21,12 +23,14 @@ import { use, useDebugValue, useEffect, useState } from "react";
 
 export default function Home() {
 
-  const BASE_DATA:BaseData = {
+const BASE_DATA:BaseData = {
     bgCircle:'#cc0000',
     bgBlue:"#0B61A4",
     outlineBlack:0.005,
     outlineWhite:0.025,
     borderCircle:0.1,
+    zipBorderWhite:0.06,
+    zipBorderBlack:0.12,
     debug:true,
     seven:{
       defaultWidth:700,
@@ -87,8 +91,11 @@ export default function Home() {
     ];
     const BASE_CITIES = [
       {name:"Череповец",distance:90},
-      {name:"Вологда",distance:120},
-      {name:"Сокол",distance:160,transcription:"Sokol"}
+      {name:"Вологда",distance:120}
+    ]
+    const BASE_CITIES2 = [
+      {name:"Череповец",distance:90,direction:DirectionCity.LEFT,color:ColorSign.BLUE},
+      {name:"Вологда",distance:120,direction:DirectionCity.RIGHT}
     ]
     const [gapA,setGapA] = useState(0.4);
     const [gapB,setGapB] = useState(0.6);
@@ -131,12 +138,10 @@ export default function Home() {
       <br/>
       <button className={`p-4 ${!debug ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setDebug(false)}}>Debug OFF</button>
       <button className={`p-4 ${debug ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setDebug(true)}}>Debug ON</button>
-      <br/>
-      <input className="bg-gray-100 border-black" onChange={(e)=>{setDistance(e.target.value)}} value={distance || ''}/><br/>
-      <button className={`p-4 ${type7sign === 'left' ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setType7Sign('left')}}>Слева</button>
-      <button className={`p-4 ${type7sign === 'normal' ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setType7Sign('normal')}}>Спереди</button>
-      <button className={`p-4 ${type7sign === 'right' ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setType7Sign('right')}}>Справа</button>
-      <br/><br/>
+      
+
+
+      <Sign1_1  width={width} time={time} sizeType={sizeType} sizeView={sizeView} baseData={baseData}></Sign1_1>
       <input type='number' step='0.1' className="bg-gray-100 border-black" onChange={(e)=>{setGapA(Number(e.target.value))}} value={gapA || 0}/><br/>
       <input type='number' step='0.1' className="bg-gray-100 border-black" onChange={(e)=>{setGapB(Number(e.target.value))}} value={gapB || 0}/><br/>
       <button className={`p-4 ${fontSize === 100 ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setFontSize(100)}}>100 мм</button>
@@ -147,6 +152,12 @@ export default function Home() {
       <button className={`p-4 ${fontSize === 500 ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setFontSize(500)}}>500 мм</button>
       <Sign6_12 color={ColorSign.BLUE} gapA={gapA*fontSize} gapB={gapB*fontSize} fontSize={fontSize} cities={BASE_CITIES} sizeView={false} width={width*2} sizeType={sizeType} baseData={baseData}></Sign6_12>
       <Sign6_12 color={ColorSign.WHITE} gapA={gapA*fontSize} gapB={gapB*fontSize} fontSize={fontSize} cities={BASE_CITIES} sizeView={false} width={width*2} sizeType={sizeType} baseData={baseData}></Sign6_12>
+      <br/>
+      <input className="bg-gray-100 border-black" onChange={(e)=>{setDistance(e.target.value)}} value={distance || ''}/><br/>
+      <button className={`p-4 ${type7sign === 'left' ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setType7Sign('left')}}>Слева</button>
+      <button className={`p-4 ${type7sign === 'normal' ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setType7Sign('normal')}}>Спереди</button>
+      <button className={`p-4 ${type7sign === 'right' ? 'bg-blue-600 text-white' : ''}`} onClick={()=>{setType7Sign('right')}}>Справа</button>
+      <br/><br/>
       <Sign7_3 sizeView={false} distance={distance} type={type7sign} width={width} sizeType={sizeType} baseData={baseData}></Sign7_3>
       <Sign7_2 sizeView={false} distance={distance} type={type7sign} width={width} sizeType={sizeType} baseData={baseData}></Sign7_2>
       <Sign7_1 sizeView={false} distance={distance} type={type7sign} width={width} sizeType={sizeType} baseData={baseData}></Sign7_1>
